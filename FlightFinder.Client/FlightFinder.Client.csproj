@@ -1,0 +1,75 @@
+<Project Sdk="Microsoft.NET.Sdk.Web;Microsoft.NET.Sdk.Razor/2.1.0-preview2-30230">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.0-preview2-30230" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.1.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FlightFinder.Shared\FlightFinder.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BlazorGenerate Remove="Main.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BlazorGenerate Remove="Components\GreyOutZone.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Components\GreyOutZone.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Components\GreyOutZone.cshtml" />
+    <None Include="Components\SearchResult.cshtml" />
+    <None Include="Components\SearchResultFlightSegment.cshtml" />
+    <None Include="Components\Shortlist.cshtml" />
+    <None Include="Components\ShortlistFlightSegment.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BlazorGenerate Remove="Components\SearchResult.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Components\SearchResult.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BlazorGenerate Remove="Components\SearchResultFlightSegment.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Components\SearchResultFlightSegment.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BlazorGenerate Remove="Components\Shortlist.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Components\Shortlist.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <BlazorGenerate Remove="Components\ShortlistFlightSegment.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Components\ShortlistFlightSegment.cshtml" />
+  </ItemGroup>
+
+</Project>

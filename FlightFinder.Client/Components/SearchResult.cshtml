@@ -1,0 +1,43 @@
+﻿<div class="px-4">
+    @if (Itineries != null)
+    {
+        <div class="title">
+            <h2 class="my-3">@Itineries.Count results</h2>
+            <select class="custom-select" @bind(chosenSortOrder)>
+                <option value="@SortOrder.Price">Chepest</option>
+                <option value="@SortOrder.Duration">Quickest</option>
+            </select>
+        </div>
+
+        @foreach (var item in sortedItineries)
+        {
+            <div class="mb-4 d-flex align-items-center">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex align-items-center">
+                        <SearchResultFlightSegment Symbol="▶" Flight="item.Outbound" />
+                    </li>
+                    <li class="list-group-item d-flex align-items-center">
+                        <SearchResultFlightSegment Symbol="◀" Flight="item.Return" />
+                    </li>
+                </ul>
+                <div class="price ml-3">
+                    <h3>@item.Price.ToString("$0")</h3>
+                    <button class="btn" @onclick(() => OnAddItinery(item))>Add</button>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+@functions
+{
+//Parameters
+public ICollection<Itinery> Itineries { get; set; }
+public Action<Itinery> OnAddItinery { get; set; }
+
+// Private state
+private SortOrder chosenSortOrder;
+private IEnumerable<Itinery> sortedItineries => chosenSortOrder == SortOrder.Price ? Itineries.OrderBy(x => x.Price) : Itineries.OrderBy(x => x.TotalDurationHours);
+
+enum SortOrder { Price, Duration }
+}
